@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel TDD basecampy demo
+                  Laracasts Birdboard demo
                 </div>
 
                 <div class="links">
