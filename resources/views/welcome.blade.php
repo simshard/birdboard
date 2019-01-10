@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Laravel TDD basecampy demo
                 </div>
 
                 <div class="links">
