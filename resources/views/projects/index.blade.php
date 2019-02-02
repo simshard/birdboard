@@ -6,6 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">All Projects</div>
+                
                   </div>
                 <div class="card-body">
                     @if (session('status'))

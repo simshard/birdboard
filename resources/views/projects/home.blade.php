@@ -13,7 +13,9 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
+            <div class="mb-4">
+              <a href="/projects/create"class="btn btn-primary btn-info">Create New Project</a>
+            </div>
             <ul>
               @forelse ($projects as $project)
                 <li><a href="{{ $project->path() }}">{{ $project->title }}</a></li>
