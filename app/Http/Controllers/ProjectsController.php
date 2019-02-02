@@ -3,16 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 use App\Project;
 
 class ProjectsController extends Controller
 {
+ //home
     public function index()
     {
-      $projects=Project::all();
-      return view('projects.index',compact('projects'));
+       $projects=Project::all();
+      //$projects=auth()->user()->projects;
+      return view('projects.home',compact('projects'));
     }
+
+    public function create()
+    {
+    return view('projects.create' );
+    }
+
+
     public function store()
     {
 
@@ -35,6 +44,9 @@ class ProjectsController extends Controller
 
   public function show(Project $project)
   {
+    if (auth()->user()->isNot($project->owner)){
+      abort(403);
+    }
       return view('projects.show',compact('project'));
   }
 

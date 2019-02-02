@@ -6,18 +6,22 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class ProjectsTest extends TestCase
+class manageProjectsTest extends TestCase
 {
   use WithFaker,RefreshDatabase;
 
   /** @test */
-  public function only_auth_users_can_create_a_project()
+  public function guests_cannot_manage_projects()
   {
-    // $this->withoutExceptionHandling();
-    $attributes=factory('App\Project')->raw(['owner_id'=>null]);
-  //  $this->post('/projects',$attributes)->assertSessionHasErrors('owner_id');
-   $this->post('/projects',$attributes)->assertRedirect('login');
+   // $this->withoutExceptionHandling();
+    $project=factory('App\Project')->create();
+    $this->get('/projects')->assertRedirect('login');
+    $this->get('/projects/create')->assertRedirect('login');
+    $this->post('/projects',$project->toArray())->assertRedirect('login');
+    $this->get($project->path())->assertRedirect('login');
   }
+
+
 
 
 
@@ -37,6 +41,9 @@ class ProjectsTest extends TestCase
     $this->post('/projects',$attributes)->assertSessionHasErrors('description');
   }
 
+
+
+
   /** @test */
   public function a_user_can_create_a_project()
   {
@@ -53,13 +60,27 @@ class ProjectsTest extends TestCase
     $this->get('/projects')->assertSee($attributes['title']);
   }
   /** @test */
-  public function a_user_can_view_a_project()
+  public function user_can_view_a_project()
   {
-    $this->withoutExceptionHandling();
-    $project=factory('App\Project')->create();
+  //  $this->withoutExceptionHandling();
+       $this->be(factory('App\User')->create());
+    $project=factory('App\Project')->create(['owner_id'=>auth()->id()]);
+
     $this->get($project->path())
         ->assertSee($project->title)
         ->assertSee($project->description);
+
   }
+  /** @test */
+  public function a_user_cannot_view_others_projects()
+  {
+    //$this->withoutExceptionHandling();
+
+      $this->be(factory('App\User')->create());
+    $project=factory('App\Project')->create();
+    $this->get($project->path())
+        ->assertStatus(403);
+  }
+/*  */
 
 } //end class
