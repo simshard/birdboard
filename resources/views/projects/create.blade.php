@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <div class="container">
-    <div class="col-md-8 blog-main">
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
     <h1>Create project</h1>
 
       <form class="form-horizontal" action="/projects" method="post">
@@ -29,16 +24,8 @@
         <button type="submit" name="submit"  class=" btn btn-primary btn-info">
           Create Project
       </button>
-
+  </div>
 
       </form>
     </div>
-    </div>
-
-
-
-
-
-
-  </body>
-</html>
+ @endsection

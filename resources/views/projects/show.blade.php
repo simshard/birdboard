@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
+@extends('layouts.app')
+
+@section('content')
+  <div class="container">
     <h1>{{ $project->title }}</h1>
       <div>
        {{ $project->description }}
       </div>
-   
-  </body>
-</html>
+
+  </div>
+ @endsection
