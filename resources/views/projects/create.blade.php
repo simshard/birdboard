@@ -21,9 +21,10 @@
       </div>
 
       <div class="form-group">
-        <button type="submit" name="submit"  class=" btn btn-primary btn-info">
+        <button type="submit" name="submit"  class=" btn btn-primary">
           Create Project
       </button>
+      <a href="/home" class=" btn btn-link">Cancel</a>
   </div>
 
       </form>
