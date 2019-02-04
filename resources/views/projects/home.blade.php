@@ -1,29 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">All Projects</div>
-                  </div>
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-            <div class="mb-4">
-              <a href="/projects/create"class="btn btn-primary btn-info">Create New Project</a>
+<div class="mb3">
+  <h2>All Projects</h2>
+  <div class="mb-4">
+    <a href="/projects/create"class="btn btn-primary btn-info">Create New Project</a>
+  </div>
+  <div class="flex">
+    @forelse ($projects as $project)
+            <div class="bg-white mr-4 p-5 rounded shadow w-1/3" style="height:150px;">
+              <h3 class="font-normal text-xl mb-3 "><a href="{{ $project->path() }}" class="no-underline">{{ $project->title }}</a></h3>
+              <div class="text-grey">{{str_limit( $project->description,120) }}</div>
             </div>
-            <ul>
-              @forelse ($projects as $project)
-                <li><a href="{{ $project->path() }}">{{ $project->title }}</a></li>
-              @empty
-                <li> No Projects Yet</li>
+      @empty
+          <h3> No Projects Yet</h3>
+      @endforelse
+         </div>
+   </div>
 
-              @endforelse
-        </div>
-    </div>
-</div>
 @endsection
