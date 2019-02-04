@@ -26,7 +26,7 @@
 
 
 
-                <div class="flex justify-between items-center py-4">
+                <div class="flex justify-between items-center w-full p-3">
                     <!-- Left Side Of Navbar -->
                     <a href="{{ url('/') }}">
                       {{ 'BirdBoard' }}
@@ -63,7 +63,7 @@
                                         @csrf
                                     </form>
                                 </div>
-                          
+
                         @endguest
                     </ul>
                 </div>
