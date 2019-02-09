@@ -11,8 +11,8 @@ class ProjectsController extends Controller
  //home
     public function index()
     {
-       $projects=Project::all();
-      //$projects=auth()->user()->projects;
+     $projects=Project::all();
+  //  $projects=auth()->user()->projects;
       return view('projects.home',compact('projects'));
     }
 

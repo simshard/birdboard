@@ -10,6 +10,11 @@
   <div class="lg:flex -mx-3">
 <div class="lg:w-2/3 px-3 mb-6">
   <h2 class="font-normal text-grey-darker">Tasks</h2>
+   @foreach ($project->tasks as $task)
+     <p>{{ $task->body }}</p>
+   @endforeach
+
+
     <div class="mb-3">
       <div class="card">
         Lorem ipsum dolor sit amet.

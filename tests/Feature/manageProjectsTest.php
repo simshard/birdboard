@@ -62,6 +62,7 @@ class manageProjectsTest extends TestCase
     $this->get('/projects')->assertSee($attributes['title']);
   }
   /** @test */
+  /*This test will fail because  a logged user is now required to view a project*/
 /*  public function user_can_view_a_project()
   {
   //  $this->withoutExceptionHandling();
