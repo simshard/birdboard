@@ -16,6 +16,6 @@ class ProjectTasksController extends Controller
       }
       request()->validate(['body'=>'required']);
       $project->addTask(request('body'));
-      return redirect($project->path());
+      return redirect($project->path())->with('status', 'Task added successfully!');;
     }
 }

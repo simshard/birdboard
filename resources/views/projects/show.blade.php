@@ -2,6 +2,11 @@
  @extends ('layouts.app')
 
 @section('content')
+  @if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+@endif
     <header class="flex items-center mb-3 py-4">
 
 
@@ -22,13 +27,15 @@
                     {{-- tasks --}}
                     @foreach ($project->tasks as $task)
                         <div class="card mb-3">{{ $task->body }}</div>
-                    @endforeach
-                    <div class="card mb-3">
-                        <form action="{{ $project->path() . '/tasks' }}" method="POST">
+                      @endforeach   
+                        <div class="card mb-3">
+                          <form method="post" action="{{ $project->path().'/tasks' }}">
                             @csrf
-                            <input placeholder="Add a new task..." class="w-full" name="body">
+                          <input placeholder="Add a Task" type="text" class="w-full" name="body" id="body"></div>
                         </form>
-                      </div>
+                        </div>
+
+
 
                 <div>
                     <h2 class="text-lg text-grey-darker font-normal mb-3">General Notes</h2>
