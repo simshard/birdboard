@@ -16,7 +16,8 @@ Auth::routes();
 //  return session('name');
 //   return view('welcome');
 // });
- Route::get('/', 'ProjectsController@index');
+ #Route::get('/', 'ProjectsController@index');
+ Route::get('/', function () {  return view('welcome'); });
 Route::group(['middleware'=>'auth'],function(){
     Route::get('/projects', 'ProjectsController@index');
     Route::get('/projects/create', 'ProjectsController@create');

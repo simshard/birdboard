@@ -9,7 +9,7 @@
 @endif
     <header class="flex items-center mb-3 py-4">
       <div class="flex justify-between items-end w-full mb-4">
-           <p ><a href="/home" class="font-normal text-grey-darker no-underline hover:underline">My Projects</a>/{{  $project->title  }}</p>
+           <p ><a href="/projects" class="font-normal text-grey-darker no-underline hover:underline">My Projects</a>/{{  $project->title  }}</p>
             <a href="/projects/create"class="button">Create New Project</a>
         </div>
     </header>
@@ -44,7 +44,7 @@
                     <h2 class="text-lg text-grey-darker font-normal mb-3">General Notes</h2>
 
                     {{-- general notes --}}
-                    <textarea class="card w-full" style="min-height: 200px">{{$project->notes}}</textarea>
+                    <textarea class="card w-full" style="min-height: 200px">lorem ipsum {{$project->notes}}</textarea>
                 </div>
             </div>
 
